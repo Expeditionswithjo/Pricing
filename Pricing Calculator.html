@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery Pricing Calculator</title>
+    <script>
+        function calculatePrice() {
+            // Get input values
+            let distance = parseFloat(document.getElementById("distance").value);
+            let time = parseFloat(document.getElementById("time").value);
+            let itemValue = parseFloat(document.getElementById("itemValue").value);
+            
+            // Rates
+            const distanceRate = 2; // $2 per km
+            const timeRate = 1.5; // $1.5 per minute
+            const insuranceRate = 0.1; // 10% of item value
+            
+            // Calculate costs
+            let distanceCost = distance * distanceRate;
+            let timeCost = time * timeRate;
+            let insuranceCost = itemValue * insuranceRate;
+            
+            // Total Cost
+            let totalCost = distanceCost + timeCost + insuranceCost;
+            
+            // Display result
+            document.getElementById("totalCost").innerHTML = "Total Cost: $" + totalCost.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h2>Delivery Pricing Calculator</h2>
+    <label for="distance">Distance (km):</label>
+    <input type="number" id="distance" step="0.1"><br><br>
+
+    <label for="time">Time (minutes):</label>
+    <input type="number" id="time" step="0.1"><br><br>
+
+    <label for="itemValue">Item Value for Insurance ($):</label>
+    <input type="number" id="itemValue" step="0.01"><br><br>
+
+    <button onclick="calculatePrice()">Calculate</button>
+    
+    <p id="totalCost"></p>
+</body>
+</html>
